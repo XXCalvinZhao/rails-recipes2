@@ -20,4 +20,7 @@ class Event < ApplicationRecord
  def generate_friendly_id
    self.friendly_id ||= SecureRandom.uuid
  end
+
+ has_many :tickets, :dependent => :destroy
+ 
 end
