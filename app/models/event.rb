@@ -37,10 +37,9 @@ class Event < ApplicationRecord
  scope :only_available, -> { where( :status => ["public", "private"] ) }
 
  mount_uploader :logo, EventLogoUploader
-<<<<<<< HEAD
-=======
+
  mount_uploaders :images, EventImageUploader
  serialize :images, JSON
->>>>>>> ch19
+
 
 end
