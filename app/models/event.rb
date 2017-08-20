@@ -24,6 +24,10 @@ class Event < ApplicationRecord
  has_many :tickets, :dependent => :destroy, :inverse_of  => :event
  accepts_nested_attributes_for :tickets, :allow_destroy => true, :reject_if => :all_blank
 
+ has_many :attachments, :class_name => "EventAttachment", :dependent => :destroy
+ accepts_nested_attributes_for :attachments, :allow_destroy => true, :reject_if => :all_blank
+
+
  include RankedModel
  ranks :row_order
 
@@ -33,5 +37,10 @@ class Event < ApplicationRecord
  scope :only_available, -> { where( :status => ["public", "private"] ) }
 
  mount_uploader :logo, EventLogoUploader
+<<<<<<< HEAD
+=======
+ mount_uploaders :images, EventImageUploader
+ serialize :images, JSON
+>>>>>>> ch19
 
 end
